@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-image: linear-gradient(blue,rgb(241, 90, 196));
+            height:700px;
+            width:100%;
+        }
+        table{
+            margin-left: 700px;
+            margin-top: 50px;
+        }
+        tr{
+            height:50px; 
+            width:100px;
+            padding-left: 20px;
+        }
+        #t1{
+            width:200px;
+            text-align: center;
+        }
+        .a1{
+            margin-left: 150px;
+            margin-top: 100px;
+            height: 50px;
+            font-size: 20px;
+        }
+        .a2{
+            font-size: 30px;
+            margin-left: 200px;
+        }
+        #x5{
+            margin-top:50px;
+            font-size: 30px;
+            margin-left:200px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" class="a1" id="x1">
+    <input type="text" class="a1" id="x2">
+    <input type="button" class="a1" onclick="myFun()" value="OK" id="x3" style="width:200px; background-color: aqua; border-radius: 20px;">
+    <table id="t1" border="1" style="border:1px solid black;border-collapse: collapse;">
+        <tr>
+            <td>Key</td>
+            <td>Value</td>
+        </tr>
+    </table>
+    <span class="a2" >Search Bar: <input type="text" class="a1" id="x4" style="margin-left: 50px;"></span>
+    <input type="button" class="a1" onclick="find()" value="OK" id="x3" style="width:200px; background-color: aqua; border-radius: 20px;">
+    <p id="x5"></p>
+    <script>
+        var i=1;
+        var z=new Map();
+        function myFun(){
+            
+            if(document.getElementById("x1").value.length==0 && document.getElementById("x2").value.length==0){
+            }
+            else{
+            z.set(document.getElementById("x1").value,document.getElementById("x2").value);
+            var table= document.getElementById("t1");
+            var row=table.insertRow(i);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            
+            cell1.innerHTML = document.getElementById("x1").value;
+            cell2.innerHTML = document.getElementById("x2").value;
+            i++;
+            
+            document.getElementById("x1").value="";
+            document.getElementById("x2").value="";
+            }
+            
+        }
+        var p;
+        function find(){
+            var q=document.getElementById("x4").value;
+             z.forEach(function(v,k){
+                if(q==v){
+                    document.getElementById("x5").innerHTML=k;
+                }
+                else if(q==k){
+                    document.getElementById("x5").innerHTML=v;
+                }
+             });
+        }
+    </script>
+</body>
+</html>
